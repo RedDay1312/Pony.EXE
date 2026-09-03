@@ -9,12 +9,6 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "check": "node --check server.js && node --check game.js",
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.35.0",
-    "eslint": "^9.35.0",
-    "globals": "^16.3.0"
+    "check": "node --check server.js && node --check game.js"
   }
 }
