@@ -1,0 +1,28 @@
+{
+  "name": "my-little-pony-the-last-save",
+  "version": "1.0.0",
+  "description": "MY LITTLE PONY: THE LAST SAVE — a narrative horror adventure inspired by pony fantasy and creepypasta aesthetics.",
+  "main": "main.js",
+  "author": "RedDay1312",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "dist": "electron-builder --win portable",
+    "lint": "eslint .",
+    "check": "node --check main.js && node --check renderer.js"
+  },
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.35.0"
+  },
+  "build": {
+    "appId": "com.everfree.lastsave",
+    "productName": "MY LITTLE PONY - THE LAST SAVE",
+    "files": ["main.js", "index.html", "styles.css", "renderer.js", "README.md"],
+    "asar": true,
+    "win": { "target": "portable", "artifactName": "THE-LAST-SAVE-${version}.exe" }
+  }
+}
