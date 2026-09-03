@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MY LITTLE PONY: THE LAST SAVE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="boot" class="screen boot-screen">
+    <div class="boot-logo">EVERFREE.EXE</div>
+    <div class="boot-line" id="bootLine">initializing friendship memory...</div>
+    <div class="boot-bar"><span id="bootBar"></span></div>
+  </div>
+
+  <main id="app" class="hidden">
+    <section id="menu" class="screen menu-screen"></section>
+    <section id="game" class="screen game-screen hidden">
+      <header class="topbar">
+        <div class="chapter"><span id="chapterLabel"></span><span id="clockLabel"></span></div>
+        <div class="top-actions">
+          <button data-action="save">SAVE</button>
+          <button data-action="inventory">INVENTORY</button>
+          <button data-action="menu">MENU</button>
+        </div>
+      </header>
+      <div class="game-grid">
+        <aside class="side-panel">
+          <div id="portrait" class="portrait"></div>
+          <div id="playerName" class="player-name"></div>
+          <div id="stats" class="stats"></div>
+          <div class="relationship-title">RELATIONSHIPS</div>
+          <div id="relationships" class="relationships"></div>
+        </aside>
+        <section class="story-panel">
+          <div id="locationTitle" class="location-title"></div>
+          <div id="scene" class="scene"></div>
+          <div id="choices" class="choices"></div>
+        </section>
+      </div>
+    </section>
+    <section id="overlay" class="overlay hidden"></section>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>
