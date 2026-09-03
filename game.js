@@ -3,7 +3,7 @@
   const $ = (id) => document.getElementById(id);
   const KEY = 'the-last-save-browser-v1';
   const SLOT = `${KEY}:slot:`;
-  const CHARACTERS = {twilight:['СУМЕРЕЧНАЯ ИСКРА','МАГИЯ'],fluttershy:['ФЛАТТЕРШАЙ','ЭМПАТИЯ'],pinkie:['ПИНКИ ПАЙ','ХАОС'],applejack:['ЭППЛДЖЕК','УРОЖАЙ'],rarity:['РЭЙНБОУ?','ФОКУС'],rainbow:['РАДУГА ДЭШ','СКОРОСТЬ']};
+  const CHARACTERS = {twilight:['СУМЕРЕЧНАЯ ИСКРА','МАГИЯ'],fluttershy:['ФЛАТТЕРШАЙ','ЭМПАТИЯ'],pinkie:['ПИНКИ ПАЙ','ХАОС'],applejack:['ЭППЛДЖЕК','УРОЖАЙ'],rarity:['РЭРИТИ','ФОКУС'],rainbow:['РАДУГА ДЭШ','СКОРОСТЬ']};
   const NPCS = ['Сумеречная Искорка','Флаттершай','Пинки Пай','Эпплджек','Рэрити','Радуга Дэш'];
   const initial = () => ({player:null,act:0,scene:'prologue',location:'Понивилль',chapter:'ПРОЛОГ — ОБЫЧНЫЙ ДЕНЬ',friendship:15,courage:15,attention:15,trust:15,memory:0,corruption:0,saves:0,loads:0,loops:0,inventory:[],endings:[],games:{},visits:{},difficulty:'НОРМАЛЬНО',newGamePlus:false,relationships:Object.fromEntries(NPCS.map(n=>[n,20]))});
   let S = readState();
