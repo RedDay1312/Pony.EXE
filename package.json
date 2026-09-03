@@ -11,17 +11,19 @@
     "dev": "electron .",
     "dist": "electron-builder --win portable",
     "lint": "eslint .",
-    "check": "node --check main.js && node --check renderer.js"
+    "check": "node --check main.js && node --check game.js"
   },
   "devDependencies": {
     "electron": "^38.1.0",
     "electron-builder": "^26.0.12",
-    "eslint": "^9.35.0"
+    "eslint": "^9.35.0",
+    "@eslint/js": "^9.35.0",
+    "globals": "^16.3.0"
   },
   "build": {
     "appId": "com.everfree.lastsave",
     "productName": "MY LITTLE PONY - THE LAST SAVE",
-    "files": ["main.js", "index.html", "styles.css", "renderer.js", "README.md"],
+    "files": ["main.js", "index.html", "styles.css", "game.js", "README.md"],
     "asar": true,
     "win": { "target": "portable", "artifactName": "THE-LAST-SAVE-${version}.exe" }
   }
