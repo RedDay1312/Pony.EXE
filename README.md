@@ -4,6 +4,14 @@
 
 A standalone Electron horror adventure built around a deliberately friendly opening that slowly turns into a story about memory, save files and a world that keeps restarting itself.
 
+## For players
+
+You do **not** need Node.js, npm or the project source to play the game.
+
+Download the Windows player ZIP from the GitHub Actions build artifact, extract it, and double-click `THE-LAST-SAVE.exe`.
+
+The portable EXE contains the game runtime and is designed to run directly on Windows.
+
 ## Included
 
 - Six playable starting characters with different specialties.
@@ -18,9 +26,11 @@ A standalone Electron horror adventure built around a deliberately friendly open
 - Six-ending framework including the secret `ENDING 06 — ???` route.
 - New Game+ that carries memories of previous runs.
 - False error messages, time anomalies, altered photographs and fourth-wall dialogue.
-- Windows portable `.exe` build through GitHub Actions.
+- Windows portable `.exe` and player ZIP builds through GitHub Actions.
 
-## Run locally
+## Run from source
+
+For development only:
 
 ```bash
 npm install
@@ -40,7 +50,7 @@ npm run lint
 npm run dist
 ```
 
-The GitHub Actions workflow also produces `THE-LAST-SAVE-Windows` as a downloadable build artifact on pushes to `main`.
+Every push to `main` builds a self-contained Windows EXE and a player ZIP. The player ZIP contains only the EXE and a tiny instruction file, so players do not need to reinstall dependencies after each game update.
 
 ## Design direction
 
