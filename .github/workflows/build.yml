@@ -1,9 +1,12 @@
-name: Build Windows EXE
+name: Build Windows Game
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -11,20 +14,53 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
+
       - name: Static checks
         run: npm run check
+
       - name: Lint
         run: npm run lint
+
       - name: Build portable EXE
         run: npm run dist
-      - name: Upload EXE
+
+      - name: Prepare player archive
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist\THE-LAST-SAVE | Out-Null
+          $exe = Get-ChildItem dist\THE-LAST-SAVE-*.exe | Select-Object -First 1
+          Copy-Item $exe.FullName dist\THE-LAST-SAVE\THE-LAST-SAVE.exe
+          @'
+          MY LITTLE PONY: THE LAST SAVE
+
+          HOW TO PLAY
+          1. Extract this ZIP anywhere.
+          2. Double-click THE-LAST-SAVE.exe.
+          3. No Node.js, npm or source files are required.
+
+          The EXE contains the complete game runtime.
+          Your saves are stored locally by the game.
+          '@ | Set-Content -Encoding UTF8 dist\THE-LAST-SAVE\README-PLAY.txt
+          Compress-Archive -Path dist\THE-LAST-SAVE\* -DestinationPath dist\THE-LAST-SAVE-Windows.zip -Force
+
+      - name: Upload portable EXE
         uses: actions/upload-artifact@v4
         with:
-          name: THE-LAST-SAVE-Windows
-          path: dist/*.exe
+          name: THE-LAST-SAVE-Windows-EXE
+          path: dist/THE-LAST-SAVE-*.exe
+          if-no-files-found: error
+
+      - name: Upload player ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: THE-LAST-SAVE-Windows-ZIP
+          path: dist/THE-LAST-SAVE-Windows.zip
+          if-no-files-found: error
